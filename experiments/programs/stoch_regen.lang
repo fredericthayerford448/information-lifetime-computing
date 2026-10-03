@@ -1,0 +1,17 @@
+// Experiment program: `y` comes from a non-exact transform (regen = distributional) but its consumers
+// require an exact value (accept defaults to exact).  A sound planner must not recompute it.
+// Used by experiments/ablation_matrix.py to show what happens when boundary typing is ablated.
+system StochRegen {
+    componente sram { role = primary }
+    componente nvm  { role = durable }
+    flusso sram -> nvm
+    flusso nvm -> sram
+
+    stato a : u8 { durata = persistent }
+    trasforma add(a, a) -> y { regen = distributional }
+    trasforma inc(y) -> u1
+    trasforma not(u1) -> u2
+    trasforma not(u2) -> u3
+    trasforma xor(y, u3) -> z
+    emit z
+}
