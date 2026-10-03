@@ -1,0 +1,5 @@
+// expect: E-OP
+system S {
+  stato a : bit
+  trasforma frobnicate(a) -> y
+}

@@ -1,0 +1,20 @@
+// Example 4 - checkpoint: `sample` is a source-bound input (it cannot be
+// regenerated) that is needed again after an idle gap.  recompute and uncompute
+// are illegal for it; retain-through-the-gap exposes it to loss for many slots.
+// A durable checkpoint closes that exposure.  Which fate wins depends on the
+// fault rate:
+//
+//   ilc plan examples/checkpoint.lang                  (default fault rate)
+//   ilc plan examples/checkpoint.lang --profile fragile (high fault rate)
+system Checkpoint {
+    stato sample : u8
+    stato key    : u8 { durata = persistent }
+
+    trasforma xor(sample, key) -> m1
+    trasforma inc(m1) -> m2
+    trasforma not(m2) -> m3
+    trasforma not(m3) -> m4
+    trasforma not(m4) -> m5
+    trasforma add(sample, m5) -> out
+    emit out
+}

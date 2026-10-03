@@ -1,0 +1,8 @@
+// expect: E-LIFETIME
+system S {
+  stato a : bit
+  trasforma copy(a) -> early
+  trasforma copy(early) -> late
+  stato late2 : bit { durata = until(early) }
+  trasforma copy(late) -> late2
+}

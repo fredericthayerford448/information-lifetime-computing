@@ -1,0 +1,6 @@
+// expect: E-FATE-ILLEGAL
+// persistent state may not be erased
+system S {
+  stato w : u8 { durata = persistent  destino = erase }
+  trasforma copy(w) -> y
+}

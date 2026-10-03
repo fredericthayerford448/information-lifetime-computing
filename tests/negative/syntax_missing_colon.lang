@@ -1,0 +1,4 @@
+// expect: E-SYNTAX
+system S {
+  stato a bit
+}

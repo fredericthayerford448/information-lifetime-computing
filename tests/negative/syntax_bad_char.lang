@@ -1,0 +1,4 @@
+// expect: E-LEX
+system S {
+  stato a : bit @
+}

@@ -1,0 +1,12 @@
+// Example 1 - basic transformation: input -> transform -> output.
+// Nothing here is exotic; the compiler still decides what happens to every
+// state when it is no longer needed.
+//
+// Try:   ilc plan examples/basic.lang
+system Basic {
+    stato a : u8
+    stato b : u8
+
+    trasforma add(a, b) -> sum
+    emit sum
+}

@@ -1,0 +1,4 @@
+// expect: E-SYNTAX
+system S {
+  banana a
+}

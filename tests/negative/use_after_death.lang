@@ -1,0 +1,8 @@
+// expect: E-USE-AFTER-DEATH
+system S {
+  stato a : bit
+  stato t : bit { durata = until(u) }
+  trasforma copy(a) -> t
+  trasforma copy(t) -> u
+  trasforma copy(t) -> v
+}

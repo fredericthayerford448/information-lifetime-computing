@@ -1,0 +1,7 @@
+// expect: E-FATE-ILLEGAL
+// illegal uncompute: quantize is a HARD irreversibility boundary
+system S {
+  stato x : u8
+  stato q : u8 { destino = uncompute }
+  trasforma quantize(x) -> q
+}

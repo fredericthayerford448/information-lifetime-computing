@@ -1,0 +1,6 @@
+// expect: E-FATE-ILLEGAL
+// missing inverse: an input has no producing transform
+system S {
+  stato a : bit { destino = uncompute }
+  trasforma copy(a) -> y
+}

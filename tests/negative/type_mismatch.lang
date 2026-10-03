@@ -1,0 +1,6 @@
+// expect: E-TYPE
+system S {
+  stato a : bit
+  stato b : u8
+  trasforma xor(a, b) -> y
+}

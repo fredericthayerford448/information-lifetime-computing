@@ -1,0 +1,6 @@
+// expect: E-BOUNDARY
+// a transform may not claim less irreversibility than its operation has
+system S {
+  stato x : u8
+  trasforma quantize(x) -> q { bnd = none }
+}

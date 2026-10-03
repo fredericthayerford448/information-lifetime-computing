@@ -1,0 +1,4 @@
+// expect: E-TYPE
+system S {
+  stato a : u9
+}

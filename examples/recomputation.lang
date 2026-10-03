@@ -1,0 +1,26 @@
+// Example 3 - recomputation: `t` is needed at step 2 and again at step 5, with an
+// idle gap in between.  Its inputs `a` and `b` are persistent, so t = add(a, b)
+// can be regenerated from live dependencies: `recompute` is legal.
+//
+// This machine declares NO bulk tier (componente/flusso), so `move` is illegal
+// and the choice is between holding t, regenerating it, or checkpointing it.
+// Which fate wins depends on the cost regime:
+//
+//   ilc plan examples/recomputation.lang                           (default profile)
+//   ilc plan examples/recomputation.lang --profile storage-scarce  (scarce storage, cheap reset)
+system Recomputation {
+    componente sram { role = primary }
+    componente nvm  { role = durable }
+    flusso sram -> nvm
+    flusso nvm -> sram
+
+    stato a : u8 { durata = persistent }
+    stato b : u8 { durata = persistent }
+
+    trasforma add(a, b) -> t
+    trasforma inc(t) -> u
+    trasforma not(u) -> v
+    trasforma not(v) -> w
+    trasforma xor(t, w) -> y
+    emit y
+}

@@ -1,0 +1,5 @@
+// expect: E-DURATA
+system S {
+  stato a : bit { durata = until(nowhere) }
+  trasforma copy(a) -> y
+}

@@ -1,0 +1,12 @@
+// Bonus example - irreversibility boundary: `quantize` and `parity` destroy
+// information (HARD boundaries).  Their outputs can be erased or retained but
+// never uncomputed; the compiler reports why.
+//
+//   ilc plan examples/boundary.lang
+system Boundary {
+    stato x : u8
+
+    trasforma quantize(x) -> q
+    trasforma parity(q) -> p
+    emit p
+}

@@ -1,0 +1,5 @@
+// expect: E-FATE
+system S {
+  stato a : bit { destino = vanish }
+  trasforma copy(a) -> y
+}

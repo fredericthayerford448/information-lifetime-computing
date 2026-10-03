@@ -1,0 +1,5 @@
+// expect: E-UNDEF
+system S {
+  stato a : bit
+  trasforma xor(a, ghost) -> y
+}

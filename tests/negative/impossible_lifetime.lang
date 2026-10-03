@@ -1,0 +1,5 @@
+// expect: E-LIFETIME
+system S {
+  stato a : bit { durata = steps(9) }
+  trasforma copy(a) -> y
+}

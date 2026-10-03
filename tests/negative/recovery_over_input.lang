@@ -1,0 +1,6 @@
+// expect: E-RECOVERY
+system S {
+  stato a : u8
+  trasforma inc(a) -> s
+  recupero g { region = [a] }
+}

@@ -1,0 +1,5 @@
+// expect: E-ARITY
+system S {
+  stato a : bit
+  trasforma xor(a) -> y
+}

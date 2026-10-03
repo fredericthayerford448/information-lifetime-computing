@@ -1,0 +1,6 @@
+// expect: E-DEP
+system S {
+  stato a : bit
+  trasforma copy(late) -> early
+  trasforma copy(a) -> late
+}

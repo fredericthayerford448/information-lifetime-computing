@@ -1,0 +1,6 @@
+// expect: E-CONSTRAINT
+system S {
+  stato a : bit
+  trasforma copy(a) -> y
+  vincolo wattage < 3
+}

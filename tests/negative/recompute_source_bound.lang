@@ -1,0 +1,6 @@
+// expect: E-FATE-ILLEGAL
+// lost dependency: a source-bound input cannot be regenerated
+system S {
+  stato a : u8 { destino = recompute }
+  trasforma copy(a) -> y
+}

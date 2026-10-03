@@ -1,0 +1,7 @@
+// expect: E-RECOVERY-CONFLICT
+// policy=restore needs a durable checkpoint of the frontier, but a is pinned to erase
+system S {
+  stato a : u8 { destino = erase }
+  trasforma inc(a) -> s
+  recupero g { region = [s]  policy = restore }
+}

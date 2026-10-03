@@ -1,0 +1,19 @@
+// Example 2 - reversible computation: compute a temporary, use it, remove it.
+// tmp = a ^ b is a deterministic, non-lossy function of live inputs, so
+// `uncompute` (run the inverse) is a legal way to clean it up.
+//
+// Try:   ilc plan examples/reversible.lang
+//        ilc plan examples/reversible.lang --profile cmos-like     (cheap erase: fate flips)
+system Reversible {
+    stato a : bit
+    stato b : bit
+
+    stato tmp : bit {
+        durata  = until(result)
+        destino = auto
+    }
+
+    trasforma xor(a, b) -> tmp
+    trasforma copy(tmp) -> result
+    emit result
+}
